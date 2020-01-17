@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href="styles.css">
+	<title>BKJ Timer Switch - WiFi</title>
+	<script src="bkjts.js"></script>
+	<script>
+		function getConfig() {
+			console.log("invoking getConfig");
+			var xhr = new XMLHttpRequest();
+			xhr.open("GET", "requestStatus", true);
+			xhr.onload = function() {
+				if (this.readyState === XMLHttpRequest.DONE) {
+					if (this.status === 200) {
+						console.log("Fetching config.json");
+						var resObj = JSON.parse(this.responseText);
+						console.log(this.responseText);
+						updateFields(resObj);
+					} else {
+						console.warn("XMLHttpRequest did not return 200 OK!!");
+					}
+				}
+			};
+			xhr.send();
+		}
+
+		function updateFields(data) {
+
+			document.getElementById("setSSID").value = data.tsSsid;
+			document.getElementById("setmyName").value = data.tsName;
+
+		}
+	</script>
+</head>
+
+<body onload="getConfig()">
+	<div w3-include-html="header.htm"></div>
+	<div class="topnav">
+		<a href="index.htm">Overview</a>
+		<a href="settings.htm" class="active">Settings</a>
+	</div>
+	<div class="column">
+		<form action="/setTime" method="POST">
+
+		</form>
+		<form>
+			<fieldset>
+				<label>WiFi SSID</label>
+				<input type="text" id="setSSID" name="setSSID" maxlength="32" size="16" placeholder="ssid" autofocus>
+				<br><label>Password</label>
+				<input type="password" id="setPWD" name="setPWD" maxlength="32" size="16" placeholder="password">
+				<label> Enter password before clicking WiFi Settings</label>
+				<br><label>Hostname</label>
+				<input type="text" id="setmyName" maxlength="16" size="16" name="setmyName" placeholder="hostname">
+				<input type="button" class="button" align="right" value="Save" onclick="mySsidButton()">
+			</fieldset>
+		</form>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+	</div>
+	<div class="footer">
+		<p>(C) 2020 BKJ Controls.</p>
+	</div>
+
+	<script>
+		includeHTML();
+	</script>
+</body>
+
+</html>

@@ -1,0 +1,155 @@
+
+* {box-sizing: border-box}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.header {
+  background-color: white;
+  color: #ff5500;
+  padding: 10px;
+}
+/* Navbar links */
+.topnav {
+  width: 100%;
+  overflow: auto;
+  background-color: #555;
+}
+
+/* Navbar links */
+.topnav a {
+  float: Left;
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 9px;
+  text-decoration: none;
+  font-size: 17px;
+width: 33.33%; /* Three links of equal widths */
+text-align: center;
+}
+
+/* Links - change color on hover */
+.topnav a:hover {
+  background-color: #ff5500;
+  color: white;
+  font-weight: bold;
+
+}
+
+.topnav a.active {
+  background-color: #ff5500;
+  font-weight: bold;
+}
+
+
+/* Create a column that floats next to each other */
+.column {
+  width: 100%;
+}
+
+
+.footer {
+  position: fixed;
+left: 0;
+bottom: 0;
+width: 100%;
+background-color: white;
+color: #AA4400;
+text-align: center;
+  text-align: center;
+  font-size: 10px;
+  padding: 15px;
+}
+
+      form {
+        max-width: 600px;
+        margin: 0 auto;
+
+    }
+
+.myLogo {
+display: inline-block;
+float: left;
+margin-left: auto;
+margin-right: auto;
+
+
+}
+
+.myHeader {
+text-align: center;
+white-space: nowrap;
+display: inline;
+float:none;
+margin-right: auto;
+margin-left: auto;
+font-size: large;
+}
+
+
+h1 {
+        text-align: center;
+        font-size: 4vw;
+		font-family: Arial;
+        color: #ff6600;
+        margin-bottom: 5px;
+    }
+
+    table {
+       margin: 0 auto; /* or margin: 0 auto 0 auto */
+     }
+
+.button {
+  background-color: #555;
+  float:right;
+  border-style: outset;
+  border-radius: 8px;
+  border-color: #AA4400;
+  color: white;
+  padding: 6px 6px;
+  font-family: Arial;
+  text-align: center;
+  display: inline-block;
+  font-size: 14px;
+  width : 100px;
+  height : 30px;
+  -webkit-transition-duration: 0.4s; /* Safari */
+}
+
+.button:hover {
+  background-color: #ff5500; /* Orange */
+  color: white;
+  font-weight: bold;
+}
+
+p.rssi{
+  float: right;
+  margin: auto;
+  padding: 1px;
+  color: #ff5500;
+  font-weight: bold;
+}
+
+/* Responsive navigation menu (for mobile devices) */
+@media screen and (max-width: 500px) {
+  .topnav a {
+    float: none;
+    display: block;
+    width: 100%;
+    text-align: left;
+  }
+
+align-right {
+  text-align: right;
+  color:black;
+
+}
+
+align-center {
+  text-align: center;
+  color:black;
+  float: right;
+}

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href="styles.css">
+	<title>BKJ Controls</title>
+	<script src="bkjts.js"></script>
+	<script>
+		setInterval(function() {
+			getConfig();
+		}, 3000);
+
+		//var getJSON = function(url, callback) {
+		function getConfig() {
+			console.log("invoking getConfig");
+			var xhr = new XMLHttpRequest();
+			xhr.open("GET", "requestStatus", true);
+			xhr.onload = function() {
+				if (this.readyState === XMLHttpRequest.DONE) {
+					if (this.status === 200) {
+						console.log("Fetching config.json");
+						var resObj = JSON.parse(this.responseText);
+						console.log(this.responseText);
+
+						updateFields(resObj);
+
+					} else {
+						console.warn("XMLHttpRequest did not return 200 OK!!");
+
+					}
+				}
+			};
+			xhr.send();
+		}
+
+
+
+		//function getStateIndex() {
+		//getConfig("requestStatus", function(data) {
+		function updateFields(data) {
+			var disp_ssid, disp_hostname, disp_mac, disp_rLED, disp_aLED, disp_gLED, disp_buzzer;
+			
+			disp_ssid = data.tsSsid;
+			disp_hostname = data.tsName;
+			disp_mac = data.tsMAC;
+			disp_rLED = data.rLEDstate;
+			disp_aLED = data.aLEDstate;
+			disp_gLED = data.gLEDstate;
+			disp_buzzer = data.buzzerSTATE;
+		
+			document.getElementById("showSSID").innerHTML = disp_ssid;
+			document.getElementById("showHostname").innerHTML = disp_hostname;
+			document.getElementById("showMAC").innerHTML = disp_mac;
+			document.getElementById("showrLEDstate").innerHTML = disp_rLED;
+			document.getElementById("showaLEDstate").innerHTML = disp_aLED;
+			document.getElementById("showgLEDstate").innerHTML = disp_gLED;
+			document.getElementById("showBuzzerState").innerHTML = disp_buzzer;
+			
+
+		}
+	</script>
+</head>
+
+<body onload="getConfig()">
+	<div w3-include-html="header.htm"></div>
+	<div class="topnav">
+		<a href="index.htm" class="active">Overview</a>
+		<a href="settings.htm">Settings</a>
+
+	</div>
+	<div class="column">
+		<form>
+			<fieldset>
+				<label class="align-center">WiFi SSID</label>
+				<span id="showSSID">-</span>
+				<br><label class="align-center">Hostname</label>
+				<span id="showHostname">-</span>
+				<br><label class="align-center">MAC</label>
+				<span id="showMAC">-</span>
+				 
+			</fieldset>
+			<fieldset>
+				<label class="align-center"><b>RED Light</b></label>
+				<span id="showrLEDstate">-</span>
+				<input type="button" id="rLEDbutton" class="button" align="right" value="On" onclick="window.location.href = '/red_on';"">
+			</fieldset>
+			<fieldset>
+				<label class="align-center"><b>AMBER Light</b></label>
+				<span id="showaLEDstate">-</span>
+				<input type="button" id="aLEDbutton" class="button" align="right" value="On" onclick="window.location.href = '/amber_on';"">
+			</fieldset>
+			<fieldset>
+				<label class="align-center"><b>GREEN Light</b></label>
+				<span id="showgLEDstate">-</span>
+				<input type="button" id="gLEDbutton" class="button" align="right" value="On" onclick="window.location.href = '/green_on';"">
+			</fieldset>
+			<fieldset>
+				<label class="align-center"><b>Buzzer</b></label>
+				<span id="showBuzzerState">-</span>
+				<input type="button"  class="button" align="right" value="Off" onclick="window.location.href = '/buzzer_off';"">
+				<input type="button"  class="button" align="right" value="On" onclick="window.location.href = '/buzzer_on';"">
+				
+			</fieldset>
+			<fieldset>
+				<label class="align-center"><b>Reset</b></label>
+				<input type="button" id="resetbutton" class="button" align="right" value="Reset" onclick="window.location.href = '/red_off';"">
+			</fieldset>
+			<br>
+			<br>
+			<br>
+			<br>
+	</div>
+	<div class="footer">
+		<p>(C) 2020 BKJ Controls.</p>
+	</div>
+
+
+	<script>
+		includeHTML();
+	</script>
+
+</body>
+
+</html>
