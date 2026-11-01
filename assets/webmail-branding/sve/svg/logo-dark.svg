@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 400" width="100%" height="100%">
+  <defs>
+    <linearGradient id="flapLightT" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FF7D1A" />
+      <stop offset="100%" stop-color="#D94800" />
+    </linearGradient>
+    <linearGradient id="bevelLightT" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FF8A2E" />
+      <stop offset="100%" stop-color="#802D00" />
+    </linearGradient>
+    <filter id="shadowT" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="10" stdDeviation="8" flood-color="#000000" flood-opacity="0.45" />
+    </filter>
+  </defs>
+
+  <g filter="url(#shadowT)">
+    <rect x="75" y="120" width="362" height="250" fill="none" stroke="url(#bevelLightT)" stroke-width="16" stroke-linejoin="round" />
+    <line x1="75" y1="370" x2="195" y2="235" stroke="url(#bevelLightT)" stroke-width="16" stroke-linecap="round" />
+    <line x1="437" y1="370" x2="317" y2="235" stroke="url(#bevelLightT)" stroke-width="16" stroke-linecap="round" />
+    <polygon points="65,85 447,85 256,270" fill="url(#flapLightT)" stroke="#AA4400" stroke-width="6" stroke-linejoin="round" />
+    <polygon points="65,85 256,85 256,270" fill="#FFFFFF" opacity="0.12" />
+  </g>
+</svg>
